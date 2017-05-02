@@ -57,7 +57,6 @@ do
 	if [ "$counter" = "0" ]; then
 		SCRIPT_FILE=$param
 		SCRIPT_DIR=`(cd \`dirname ${SCRIPT_FILE}\`; pwd)`
-		echo SCRIPT_DIR
 		# Jika file script ada link nya
 		if [[ -L "${SCRIPT_FILE}" ]]
 		then

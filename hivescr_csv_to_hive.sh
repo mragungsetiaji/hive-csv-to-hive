@@ -85,7 +85,6 @@ do
 	if [ "$counter" = "0" ]; then
 		SCRIPT_FILE=$param
 		SCRIPT_DIR=`(cd \`dirname ${SCRIPT_FILE}\`; pwd)`
-		echo ${SCRIPT_DIR}
 		# If the script file is a symbolic link
 		if [[ -L "${SCRIPT_FILE}" ]]
 		then
@@ -127,11 +126,11 @@ fi
 # -- PROG ----------------------------------------------------------------------
 
 # Create the schema automatically by using the CSVKIT library
-"${SCRIPT_DIR}/csv2schema.sh" --parent-call $@
+"${SCRIPT_DIR}/hivescr_csv_to_hive.sh" --parent-call $@
 if [ "$?" = "1" ]; then
         exit 1
 fi
 
 # Generate the CREATE TABLE Hive statement and create the Hive table
-"${SCRIPT_DIR}/schema2hive.sh" --parent-call $@
+"${SCRIPT_DIR}/hivescr_schema_to_hive.sh" --parent-call $@
 
